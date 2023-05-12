@@ -1,0 +1,16 @@
+{
+  "name": "json-analyser",
+  "version": "1.0.0",
+  "description": "json分析工具",
+  "main": "index.js",
+  "repository": "https://github.com/yinque/json-analyser",
+  "author": "yinque",
+  "license": "MIT",
+  "scripts": {
+  },
+  "dependencies": {
+    "monaco-editor": "^0.38.0"
+  },
+  "devDependencies": {
+  }
+}

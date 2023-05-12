@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>browser-amd-editor</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<h2>Monaco Editor Sample</h2>
+<div id="container" style="width: 800px; height: 600px; border: 1px solid grey"></div>
+
+
+</body>
+<!--Monaco Editor-->
+<script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+<script>
+	require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
+
+	require(['vs/editor/editor.main'], function () {
+		var editor = monaco.editor.create(document.getElementById('container'), {
+			value: '{"name":"John Doe","age":30,"email":"john.doe@example.com","address":{"street":"123 Main St","city":"Anytown","state":"CA","zip":"12345"},"phoneNumbers":[{"type":"home","number":"555-555-1234"},{"type":"work","number":"555-555-5678"}]}',
+			language: 'json',
+			//contextmenu: false,
+		});
+		editor.updateOptions({ wordWrap: 'on' });
+
+	});
+
+</script>
+</html>
