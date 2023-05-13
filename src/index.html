@@ -7,7 +7,10 @@
 <body>
 <h2>Monaco Editor Sample</h2>
 <div id="container" style="width: 800px; height: 600px; border: 1px solid grey"></div>
-
+<span class="button-group">
+	<button id="pretty">格式化</button>
+	<button id="minify">最小化</button>
+</span>
 
 </body>
 <!--Monaco Editor-->
@@ -17,12 +20,24 @@
 
 	require(['vs/editor/editor.main'], function () {
 		var editor = monaco.editor.create(document.getElementById('container'), {
-			value: '{"name":"John Doe","age":30,"email":"john.doe@example.com","address":{"street":"123 Main St","city":"Anytown","state":"CA","zip":"12345"},"phoneNumbers":[{"type":"home","number":"555-555-1234"},{"type":"work","number":"555-555-5678"}]}',
+			value: '',
 			language: 'json',
-			//contextmenu: false,
+			contextmenu: false,
 		});
 		editor.updateOptions({ wordWrap: 'on' });
-
+		editor.setValue('{"name":"John Doe","age":30,"email":"john.doe@example.com","address":{"street":"123 Main St","city":"Anytown","state":"CA","zip":"12345"},"phoneNumbers":[{"type":"home","number":"555-555-1234"},{"type":"work","number":"555-555-5678"}]}')
+		function pretty(json_text){
+			return JSON.stringify(JSON.parse(json_text),null,"\t")
+		}
+		function minify(json_text){
+			return JSON.stringify(JSON.parse(json_text))
+		}
+		document.getElementById('pretty').onclick = ()=>{
+			editor.setValue(pretty(editor.getValue()))
+		}
+		document.getElementById('minify').onclick = ()=>{
+			editor.setValue(minify(editor.getValue()))
+		}
 	});
 
 </script>
